@@ -54,4 +54,8 @@ public class Hero {
     public void setShield(int shield) {
         this.shield = shield;
     }
+
+    public boolean isAlive(){
+        return (getHealthPoint()>0);
+    }
 }

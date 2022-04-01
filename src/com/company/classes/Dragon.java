@@ -44,4 +44,8 @@ public class Dragon {
     public void setWeapon(int weapon) {
         this.weapon = weapon;
     }
+
+    public boolean isAlive(){
+        return (getHealthPoint()>0);
+    }
 }
