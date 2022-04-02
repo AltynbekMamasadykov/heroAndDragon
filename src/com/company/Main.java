@@ -3,6 +3,8 @@ package com.company;
 import com.company.classes.Dragon;
 import com.company.classes.Hero;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,6 +13,11 @@ public class Main {
         Hero hero = new Hero(1000,100,120,250,150);
 
         int turn = 1;
+
+        while(hero.isAlive()|| dragon.isAlive()){
+
+            System.out.println("Turn "+turn);
+
 
         //--------------------------level 1 ----------------------------------------
 
@@ -28,7 +35,7 @@ public class Main {
             }
         } else {
             System.out.println("Hero missed attack");
-            return;
+
         }
 
         //----------------------level 2 ----------------------------------------------
@@ -49,14 +56,41 @@ public class Main {
         }
 
 
+        //--------------------------level 3 ---------------------------------------------
+        System.out.println("What do you want Hero to do? \n 1-Attack  \n 2-Defence \n 3-Nothing");
+        Scanner scanner = new Scanner(System.in);
+        int whatToDo = scanner.nextInt();
+        boolean useShield = false;
+        switch (whatToDo){
+            case 1:
+                if (heroAttack) {
+                    int damage = hero.getStrength() + hero.getWeapon() - dragon.getDefence();
+                    dragon.setHealthPoint(dragon.getHealthPoint() - damage);
+                    if (dragon.isAlive()) {
+                        System.out.println("Hero attacked Dragon and cause " + damage + " damage." +
+                                "Dragon has left " + dragon.getHealthPoint() + " health points");
+                    } else {
+                        System.out.println(("Hero attacked and won!"));
+                        return;
+                    }
+                } else {
+                    System.out.println("Hero missed attack");
+
+                }break;
+            case 2:
+                useShield = true;
+                hero.setDefence(hero.getDefence()+ hero.getShield());
+                System.out.println("Hero defending");
+                break;
+            case 3:
+                System.out.println("Hero did nothing");
+        }
 
 
 
 
-
-
-
-
+        turn++;
+        }
 
 
 
