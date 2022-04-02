@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         Dragon dragon = new Dragon(2000,120,150,0);
-        Hero hero = new Hero(1000,100,120,250,150);
+        Hero hero = new Hero(100,100,120,250,150);
 
         int turn = 1;
 
@@ -19,15 +19,14 @@ public class Main {
             System.out.println("Turn "+turn);
 
 
-        //--------------------------level 1 ----------------------------------------
-
+        //--------------------------level 1 ---------------------------------------
         boolean heroAttack = (Math.random() < 0.7);
 
         if (heroAttack) {
-            int damage = hero.getStrength() + hero.getWeapon() - dragon.getDefence();
-            dragon.setHealthPoint(dragon.getHealthPoint() - damage);
+            int damage1 = hero.getStrength() + hero.getWeapon() - dragon.getDefence();
+            dragon.setHealthPoint(dragon.getHealthPoint() - damage1);
             if (dragon.isAlive()) {
-                System.out.println("Hero attacked Dragon and cause " + damage + " damage." +
+                System.out.println("Hero attacked Dragon and cause " + damage1 + " damage." +
                         "Dragon has left " + dragon.getHealthPoint() + " health points");
             } else {
                 System.out.println(("Hero attacked and won!"));
@@ -42,10 +41,10 @@ public class Main {
 
         boolean DragonsTurn = (Math.random() <= 0.5);
         if(DragonsTurn){
-            int damage = dragon.getStrength()+ dragon.getWeapon()- hero.getDefence();
-            hero.setHealthPoint(hero.getHealthPoint()-damage);
+            int damage2 = dragon.getStrength()+dragon.getWeapon()-hero.getDefence();
+            hero.setHealthPoint(hero.getHealthPoint()-damage2);
             if (hero.isAlive()) {
-                System.out.println("Dragon attacked Hero and cause " + damage + " damage." +
+                System.out.println("Dragon attacked Hero and cause " + damage2 + " damage." +
                         "Hero has left " + hero.getHealthPoint() + " health points");
             } else {
                 System.out.println(("Dragon attacked and won!"));
@@ -78,6 +77,7 @@ public class Main {
 
                 }break;
             case 2:
+                heroAttack = false;
                 useShield = true;
                 hero.setDefence(hero.getDefence()+ hero.getShield());
                 System.out.println("Hero defending");
@@ -87,8 +87,7 @@ public class Main {
         }
 
 
-
-
+        System.out.println();
         turn++;
         }
 
