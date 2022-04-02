@@ -15,20 +15,43 @@ public class Main {
         //--------------------------level 1 ----------------------------------------
 
         boolean heroAttack = (Math.random() < 0.7);
-        int damage = hero.getStrength() + hero.getWeapon() - dragon.getDefence();
-            if (heroAttack) {
-                dragon.setHealthPoint(dragon.getHealthPoint() - damage);
-                if (dragon.isAlive()) {
-                    System.out.println("Hero attacked Dragon and cause " + damage + " damage." +
-                            "Dragon has left " + dragon.getHealthPoint() + " health points");
-                } else {
-                    System.out.println(("Hero attacked and won!"));
-                    return;
-                }
+
+        if (heroAttack) {
+            int damage = hero.getStrength() + hero.getWeapon() - dragon.getDefence();
+            dragon.setHealthPoint(dragon.getHealthPoint() - damage);
+            if (dragon.isAlive()) {
+                System.out.println("Hero attacked Dragon and cause " + damage + " damage." +
+                        "Dragon has left " + dragon.getHealthPoint() + " health points");
             } else {
-                System.out.println("Hero missed attack");
+                System.out.println(("Hero attacked and won!"));
                 return;
             }
+        } else {
+            System.out.println("Hero missed attack");
+            return;
+        }
+
+        //----------------------level 2 ----------------------------------------------
+
+        boolean DragonsTurn = (Math.random() <= 0.5);
+        if(DragonsTurn){
+            int damage = dragon.getStrength()+ dragon.getWeapon()- hero.getDefence();
+            hero.setHealthPoint(hero.getHealthPoint()-damage);
+            if (hero.isAlive()) {
+                System.out.println("Dragon attacked Hero and cause " + damage + " damage." +
+                        "Hero has left " + hero.getHealthPoint() + " health points");
+            } else {
+                System.out.println(("Dragon attacked and won!"));
+                return;
+            }
+        }else{
+            System.out.println("Dragon did not attack");
+        }
+
+
+
+
+
 
 
 
